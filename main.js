@@ -62,3 +62,7 @@ document.addEventListener("yt-navigate-finish", function () {
 document.addEventListener("DOMContentLoaded", function () {
   createCopyButton();
 });
+
+document
+  .querySelector("#buttonToOpenDeepLInk")
+  .addEventListener("click", openDeepLinkOrCopy);
