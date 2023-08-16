@@ -31,20 +31,22 @@ function createButton() {
   return button;
 }
 
+function openDeepLinkOrCopy() {
+  const tabUrl = window.location.href;
+  navigator.clipboard.writeText(tabUrl);
+
+  window.open(`itube-download-link://${tabUrl}`, "_blank");
+}
+
 function createCopyButton() {
-  var copyButton = createButton();
+  const copyButton = createButton();
   const icon = createIcon();
 
   copyButton.appendChild(icon);
 
-  copyButton.onclick = function () {
-    var tabUrl = window.location.href;
-    navigator.clipboard.writeText(tabUrl);
+  copyButton.onclick = openDeepLinkOrCopy;
 
-    window.open(`itube-download-link://${tabUrl}`, "_blank");
-  };
-
-  var menuElement = document.querySelector(
+  const menuElement = document.querySelector(
     "#top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer"
   );
 
@@ -55,4 +57,8 @@ document.addEventListener("yt-navigate-finish", function () {
   setTimeout(() => {
     createCopyButton();
   }, 1500);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  createCopyButton();
 });

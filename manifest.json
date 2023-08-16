@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Itube-Deep-Link",
   "version": "1.0.01",
   "description": "Extensão para abrir links do Youtube no Itube-download app",
@@ -9,8 +9,20 @@
     "scripting"
   ],
   "web_accessible_resources": [
-    "images/link.svg"
+    {
+      "resources": ["images/link.svg"],
+      "matches": ["<all_urls>"]
+    }
   ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_popup": "index.html",
+    "default_title": "IItube DeepLink"
+  },
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
