@@ -31,9 +31,9 @@ function createButton() {
   return button;
 }
 
-function openDeepLinkOrCopy() {
+async function openDeepLinkOrCopy() {
   const tabUrl = window.location.href;
-  navigator.clipboard.writeText(tabUrl);
+  await navigator.clipboard.writeText(tabUrl);
 
   window.open(`itube-download-link://${tabUrl}`, "_blank");
 }
@@ -62,7 +62,3 @@ document.addEventListener("yt-navigate-finish", function () {
 document.addEventListener("DOMContentLoaded", function () {
   createCopyButton();
 });
-
-document
-  .querySelector("#buttonToOpenDeepLInk")
-  .addEventListener("click", openDeepLinkOrCopy);

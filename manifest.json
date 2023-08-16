@@ -14,14 +14,17 @@
       "matches": ["https://www.youtube.com/*"]
     }
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_icon": {
       "16": "images/icon16.png",
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "default_popup": "index.html",
-    "default_title": "IItube DeepLink"
+   
+    "default_title": "Clique para abrir no Itube"
   },
   "icons": {
     "16": "images/icon16.png",
