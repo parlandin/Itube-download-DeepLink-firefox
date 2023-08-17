@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Itube-Deep-Link",
+    "description": "The description of the extension, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Extensão para abrir links do Youtube no Itube-download app.",
+    "description": "The description of the extension, displayed in the web store."
+  }
+}
