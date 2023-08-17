@@ -11,10 +11,9 @@ function createIcon() {
 function createButton() {
   const button = document.createElement("button");
   button.textContent = "Baixar";
-  button.className = "button-download";
+  button.className = "button-download-itube-class ytd-button-renderer";
   button.style.background = "#ffffff1a";
   button.style.border = "none";
-  /* button.style.color = "#f1f1f1"; */
   button.style.color = "#0db6e9";
   button.style.padding = "10px";
   button.style.borderRadius = "15px";
@@ -46,19 +45,39 @@ function createCopyButton() {
 
   copyButton.onclick = openDeepLinkOrCopy;
 
-  const menuElement = document.querySelector(
+  /*  const menuElement = document.querySelector(
     "#top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer"
+  );
+ */
+
+  const menuElement = document.querySelector(
+    "#content ytd-watch-flexy ytd-menu-renderer.style-scope.ytd-watch-metadata #top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer"
   );
 
   menuElement.appendChild(copyButton);
 }
 
 document.addEventListener("yt-navigate-finish", function () {
+  const isElement = document.querySelector(
+    "#content ytd-watch-flexy ytd-menu-renderer.style-scope.ytd-watch-metadata #top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer"
+  );
+
+  if (!isElement) {
+    setTimeout(() => {
+      createCopyButton();
+    }, 2000);
+    return;
+  }
+
   setTimeout(() => {
     createCopyButton();
   }, 1500);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  createCopyButton();
+document.addEventListener("visibilitychange", function () {
+  const isButton = document.querySelector(".button-download-itube-class");
+
+  if (!isButton) {
+    createCopyButton();
+  }
 });
