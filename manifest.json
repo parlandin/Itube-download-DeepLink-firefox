@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "__MSG_appName__",
   "version": "1.0.1",
   "description": "__MSG_appDesc__",
@@ -7,24 +7,25 @@
   "permissions": [
     "activeTab",
     "clipboardWrite",
+    "tabs",
+    "https://www.youtube.com/*",
     "scripting"
   ],
   "web_accessible_resources": [
-    {
-      "resources": ["images/link.svg"],
-      "matches": ["https://www.youtube.com/*"]
-    }
+    "images/link.svg"
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
   },
-  "action": {
+  "browser_action": {
     "default_icon": {
       "16": "images/icon16.png",
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-   
     "default_title": "Clique para abrir no Itube"
   },
   "icons": {
@@ -34,8 +35,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["main.js"]
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "main.js"
+      ]
     }
   ]
 }

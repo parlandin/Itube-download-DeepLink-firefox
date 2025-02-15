@@ -1,8 +1,5 @@
-chrome.action.onClicked.addListener((tab) => {
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: copyLink,
-  });
+chrome.browserAction.onClicked.addListener((tab) => {
+  chrome.tabs.executeScript(tab.id, { code: `(${copyLink})()` });
 });
 
 function copyLink() {
@@ -15,5 +12,13 @@ function copyLink() {
     .catch((error) => {
       console.error("Erro ao copiar o link:", error);
     });
+
+    const encodedUrl = encodeURIComponent(tabUrl);
+
+ 
+  
   window.open(`itube-download-link://${tabUrl}`, "_blank");
 }
+
+
+
